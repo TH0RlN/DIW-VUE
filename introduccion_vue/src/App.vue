@@ -61,7 +61,15 @@ export default {
         id = 1;
       }
       cliente.id = id;
-      this.clientes = [...this.clientes, cliente];
+
+      let newCliente = {
+        id: id,
+        nombre: cliente.nombre,
+        apellidos: cliente.apellidos,
+        email: cliente.email
+      }
+
+      this.clientes = [...this.clientes, newCliente];
     },
     deleteCliente(id) {
       this.clientes = this.clientes.filter(
