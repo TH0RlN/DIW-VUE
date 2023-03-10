@@ -12,6 +12,9 @@
         <div v-if="!clientes.length" class="alert alert-info" role="alert">
           No se han agregado clientes
         </div>
+        <div v-else>
+          <button @click="destroyClients">DESTROY</button>
+        </div>
       </div>
     </div>
   </div>
@@ -60,13 +63,23 @@ export default {
       } else {
         id = 1;
       }
-      cliente.id = id;
-      this.clientes = [...this.clientes, cliente];
+
+      let clienteNuevo =
+      {
+        id: id,
+        nombre: cliente.nombre,
+        apellidos: cliente.apellidos,
+        email: cliente.email
+      }
+      this.clientes = [...this.clientes, clienteNuevo];
     },
     deleteCliente(id) {
       this.clientes = this.clientes.filter(
         cliente => cliente.id !== id
       )
+    },
+    destroyClients() {
+      this.clientes = [];
     }
   }
 
