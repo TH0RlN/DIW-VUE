@@ -63,24 +63,24 @@ export default {
             }
         }
     },
-    methods: {
-        computed: {
-            nombreInvalido() {
-                return this.cliente.nombre.length < 1;
-            },
-            apellidoInvalido() {
-                return this.cliente.apellido.length < 1;
-            },
-            emailInvalido() {
-                return this.cliente.email.length < 1;
-            },
+    computed: {
+        nombreInvalido() {
+            return this.cliente.nombre.length < 1;
         },
+        apellidoInvalido() {
+            return this.cliente.apellidos.length < 1;
+        },
+        emailInvalido() {
+            return this.cliente.email.length < 1;
+        },
+    },
+    methods: {
         envioForm() {
             this.procesando = true;
             this.resetEstado();
 
             //comprobamos la presencia de errores
-            if (this.nombreInvalido || this.apellidoInvalido || this.emailInvalido) {
+            if (this.nombreInvalido | this.apellidoInvalido | this.emailInvalido) {
                 this.error = true;
                 return;
             }
